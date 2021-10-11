@@ -22,11 +22,72 @@ const ManajemenBuku = ({ bookList, store }) => {
     store(inputBook);
   };
 
+  const [form, setForm] = useState();
+  const showCreate = () => {
+    setForm("create");
+  };
+
   return (
     <div className="container mt-3">
       <h1 className="text-center">Manajemen Buku</h1>
-      <div id="formTambah">
-        <h5>Tambah Buku</h5>
+      {form === "create" && (
+        <div id="formTambah">
+          <h5>Tambah Buku</h5>
+          <hr />
+          <form className="form-row" onSubmit={submitAdd}>
+            <div className="col-3">
+              <input
+                autocomplete="off"
+                type="text"
+                name="judul"
+                className="form-control mx-2"
+                placeholder="Judul"
+                onChange={handleJudul}
+              />
+            </div>
+            <div className="col-3">
+              <input
+                autocomplete="off"
+                type="text"
+                name="pengarang"
+                className="form-control mx-2"
+                placeholder="Pengarang"
+                onChange={handlePengarang}
+              />
+            </div>
+            <div className="col-2">
+              <input
+                autocomplete="off"
+                type="text"
+                name="harga"
+                className="form-control mx-2"
+                placeholder="Harga"
+                onChange={handleHarga}
+              />
+            </div>
+            <div className="col-2">
+              <input
+                autocomplete="off"
+                type="number"
+                name="stok"
+                className="form-control mx-2"
+                placeholder="Stok"
+                onChange={handleStok}
+              />
+            </div>
+            <div className="col-2">
+              <input
+                autocomplete="off"
+                type="submit"
+                className="btn btn-primary"
+                value="Simpan"
+              />
+            </div>
+          </form>
+        </div>
+      )}
+      <div id="formUbah">
+        <h5>Ubah Buku</h5>
         <hr />
         <form className="form-row" onSubmit={submitAdd}>
           <div className="col-3">
@@ -79,11 +140,12 @@ const ManajemenBuku = ({ bookList, store }) => {
           </div>
         </form>
       </div>
-      <div id="formUbah"></div>
       <div id="daftarBuku">
         <h2 className="mt-3">Daftar Buku</h2>
         <hr />
-        <button className="btn btn-primary m-2">Tambah Buku</button>
+        <button className="btn btn-primary m-2" onClick={showCreate}>
+          Tambah Buku
+        </button>
         <table className="table table-bordered">
           <thead className="text-center">
             <tr>
