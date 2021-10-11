@@ -11,4 +11,4 @@ const ManajemenBuku = () => {
   );
 };
 
-export default ManajemenBuku();
+export default ManajemenBuku;
