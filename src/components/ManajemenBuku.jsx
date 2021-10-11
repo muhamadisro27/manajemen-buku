@@ -5,7 +5,56 @@ const ManajemenBuku = ({ bookList }) => {
   return (
     <div className="container mt-3">
       <h1 className="text-center">Manajemen Buku</h1>
-      <div id="formTambah"></div>
+      <div id="formTambah">
+        <h5>Tambah Buku</h5>
+        <hr />
+        <form className="form-row">
+          <div className="col-3">
+            <input
+              autocomplete="off"
+              type="text"
+              name="judul"
+              className="form-control mx-2"
+              placeholder="Judul"
+            />
+          </div>
+          <div className="col-3">
+            <input
+              autocomplete="off"
+              type="text"
+              name="pengarang"
+              className="form-control mx-2"
+              placeholder="Pengarang"
+            />
+          </div>
+          <div className="col-2">
+            <input
+              autocomplete="off"
+              type="text"
+              name="harga"
+              className="form-control mx-2"
+              placeholder="Harga"
+            />
+          </div>
+          <div className="col-2">
+            <input
+              autocomplete="off"
+              type="number"
+              name="stok"
+              className="form-control mx-2"
+              placeholder="Stok"
+            />
+          </div>
+          <div className="col-2">
+            <input
+              autocomplete="off"
+              type="submit"
+              className="btn btn-primary"
+              value="Simpan"
+            />
+          </div>
+        </form>
+      </div>
       <div id="formUbah"></div>
       <div id="daftarBuku">
         <h2 className="mt-3">Daftar Buku</h2>
