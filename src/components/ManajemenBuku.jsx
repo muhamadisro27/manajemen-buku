@@ -1,14 +1,34 @@
 import React from "react";
+import { useState } from "react";
 
-const ManajemenBuku = ({ bookList }) => {
+const ManajemenBuku = ({ bookList, store }) => {
   // console.log(bookList);
+  const [inputBook, setInputBook] = useState();
+  const handleJudul = (event) => {
+    setInputBook({ ...inputBook, judul: event.target.value });
+  };
+  const handlePengarang = (event) => {
+    setInputBook({ ...inputBook, pengarang: event.target.value });
+  };
+  const handleHarga = (event) => {
+    setInputBook({ ...inputBook, harga: event.target.value });
+  };
+  const handleStok = (event) => {
+    setInputBook({ ...inputBook, stok: event.target.value });
+  };
+
+  const submitAdd = (event) => {
+    event.preventDefault();
+    store(inputBook);
+  };
+
   return (
     <div className="container mt-3">
       <h1 className="text-center">Manajemen Buku</h1>
       <div id="formTambah">
         <h5>Tambah Buku</h5>
         <hr />
-        <form className="form-row">
+        <form className="form-row" onSubmit={submitAdd}>
           <div className="col-3">
             <input
               autocomplete="off"
@@ -16,6 +36,7 @@ const ManajemenBuku = ({ bookList }) => {
               name="judul"
               className="form-control mx-2"
               placeholder="Judul"
+              onChange={handleJudul}
             />
           </div>
           <div className="col-3">
@@ -25,6 +46,7 @@ const ManajemenBuku = ({ bookList }) => {
               name="pengarang"
               className="form-control mx-2"
               placeholder="Pengarang"
+              onChange={handlePengarang}
             />
           </div>
           <div className="col-2">
@@ -34,6 +56,7 @@ const ManajemenBuku = ({ bookList }) => {
               name="harga"
               className="form-control mx-2"
               placeholder="Harga"
+              onChange={handleHarga}
             />
           </div>
           <div className="col-2">
@@ -43,6 +66,7 @@ const ManajemenBuku = ({ bookList }) => {
               name="stok"
               className="form-control mx-2"
               placeholder="Stok"
+              onChange={handleStok}
             />
           </div>
           <div className="col-2">

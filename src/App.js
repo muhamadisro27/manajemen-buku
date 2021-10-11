@@ -32,12 +32,16 @@ function App() {
             <Beranda />
           </Route>
           <Route path="/manajemen-buku" exact>
-            <ManajemenBuku bookList={books} />
+            <ManajemenBuku bookList={books} store={storeData} />
           </Route>
         </Switch>
       </BrowserRouter>
     </div>
   );
 }
+const storeData = (inputBook) => {
+  console.log(inputBook);
+  alert("Data berhasil ditambahkan");
+};
 
 export default App;
