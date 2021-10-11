@@ -32,7 +32,7 @@ function App() {
             <Beranda />
           </Route>
           <Route path="/manajemen-buku" exact>
-            <ManajemenBuku />
+            <ManajemenBuku bookList={books} />
           </Route>
         </Switch>
       </BrowserRouter>
