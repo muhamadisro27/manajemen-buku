@@ -1,6 +1,6 @@
 import React from "react";
 
-function ManajemenBuku() {
+const ManajemenBuku = () => {
   return (
     <div className="container m-3">
       <h1 className="text-center">Manajemen Buku</h1>
@@ -9,6 +9,6 @@ function ManajemenBuku() {
       <div id="daftarBuku"></div>
     </div>
   );
-}
+};
 
 export default ManajemenBuku();
