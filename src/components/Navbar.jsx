@@ -1,5 +1,7 @@
 import React from "react";
 import logo from "../assets/camp.png";
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   return (
     <div>
@@ -8,14 +10,14 @@ const Navbar = () => {
           <ul className="nav">
             <img src={logo} alt="" style={{ height: "40px" }} />
             <li>
-              <a href="/" className="nav-link">
+              <Link to="/" className="nav-link">
                 Beranda
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/manajemen-buku" className="nav-link">
+              <Link to="/manajemen-buku" className="nav-link">
                 Manajemen Buku
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
