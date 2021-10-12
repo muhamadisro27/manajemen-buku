@@ -44,9 +44,18 @@ function App() {
     </div>
   );
 }
-const storeData = (inputBook) => {
-  console.log(inputBook);
-  alert("Data berhasil ditambahkan");
+const storeData = (inputBook, setBooks) => {
+  // console.log(inputBook);
+  axios
+    .post("http://localhost:4000/book/add", inputBook)
+    .then((res) => {
+      console.log(res);
+      setBooks((prevBooks) => [...prevBooks, inputBook]);
+      alert("Data berhasil ditambahkan");
+    })
+    .catch((error) => {
+      // console.log(error.res.data);
+    });
 };
 const updateData = (inputBook) => {
   console.log(inputBook);

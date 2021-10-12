@@ -20,6 +20,7 @@ const ManajemenBuku = ({ bookList, store, update, remove }) => {
   const submitAdd = (event) => {
     event.preventDefault();
     store(inputBook);
+    setForm("");
   };
   const submitChange = (event) => {
     event.preventDefault();
@@ -51,7 +52,7 @@ const ManajemenBuku = ({ bookList, store, update, remove }) => {
           <form className="form-row" onSubmit={submitAdd}>
             <div className="col-3">
               <input
-                autocomplete="off"
+                autoComplete="off"
                 type="text"
                 name="judul"
                 className="form-control mx-2"
@@ -61,7 +62,7 @@ const ManajemenBuku = ({ bookList, store, update, remove }) => {
             </div>
             <div className="col-3">
               <input
-                autocomplete="off"
+                autoComplete="off"
                 type="text"
                 name="pengarang"
                 className="form-control mx-2"
@@ -71,7 +72,7 @@ const ManajemenBuku = ({ bookList, store, update, remove }) => {
             </div>
             <div className="col-2">
               <input
-                autocomplete="off"
+                autoComplete="off"
                 type="text"
                 name="harga"
                 className="form-control mx-2"
@@ -81,7 +82,7 @@ const ManajemenBuku = ({ bookList, store, update, remove }) => {
             </div>
             <div className="col-2">
               <input
-                autocomplete="off"
+                autoComplete="off"
                 type="number"
                 name="stok"
                 className="form-control mx-2"
@@ -91,7 +92,7 @@ const ManajemenBuku = ({ bookList, store, update, remove }) => {
             </div>
             <div className="col-2">
               <input
-                autocomplete="off"
+                autoComplete="off"
                 type="submit"
                 className="btn btn-primary"
                 value="Simpan"
@@ -107,7 +108,7 @@ const ManajemenBuku = ({ bookList, store, update, remove }) => {
           <form className="form-row" onSubmit={submitChange}>
             <div className="col-3">
               <input
-                autocomplete="off"
+                autoComplete="off"
                 type="text"
                 name="judul"
                 className="form-control mx-2"
@@ -118,7 +119,7 @@ const ManajemenBuku = ({ bookList, store, update, remove }) => {
             </div>
             <div className="col-3">
               <input
-                autocomplete="off"
+                autoComplete="off"
                 type="text"
                 name="pengarang"
                 className="form-control mx-2"
@@ -129,7 +130,7 @@ const ManajemenBuku = ({ bookList, store, update, remove }) => {
             </div>
             <div className="col-2">
               <input
-                autocomplete="off"
+                autoComplete="off"
                 type="text"
                 name="harga"
                 className="form-control mx-2"
@@ -140,7 +141,7 @@ const ManajemenBuku = ({ bookList, store, update, remove }) => {
             </div>
             <div className="col-2">
               <input
-                autocomplete="off"
+                autoComplete="off"
                 type="number"
                 name="stok"
                 className="form-control mx-2"
@@ -151,7 +152,7 @@ const ManajemenBuku = ({ bookList, store, update, remove }) => {
             </div>
             <div className="col-2">
               <input
-                autocomplete="off"
+                autoComplete="off"
                 type="submit"
                 className="btn btn-primary"
                 value="Simpan"
@@ -185,7 +186,7 @@ const ManajemenBuku = ({ bookList, store, update, remove }) => {
                 <td>{book.pengarang}</td>
                 <td>{book.harga}</td>
                 <td>{book.stok}</td>
-                <td colspan="2">
+                <td>
                   <button
                     className="btn btn-info mr-3 text-white"
                     onClick={() => showEdit(book)}
