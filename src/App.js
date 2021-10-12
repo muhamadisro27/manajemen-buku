@@ -73,15 +73,15 @@ const updateData = (inputBook, retrieveData) => {
 };
 const deleteData = (inputBook, retrieveData) => {
   // console.log(inputBook);
-  // axios
-  //   .delete("http://localhost:4000/book/delete/" + inputBook._id)
-  //   .then(() => {
-  //     retrieveData();
-  //     alert("data berhasil dihapus!");
-  //   })
-  //   .catch((error) => {
-  //     console.log(error.message);
-  //   });
+  axios
+    .delete("http://localhost:4000/book/delete/" + inputBook._id)
+    .then(() => {
+      retrieveData();
+      alert("data berhasil dihapus!");
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
 };
 
 export default App;
