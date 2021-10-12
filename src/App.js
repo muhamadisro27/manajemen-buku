@@ -36,6 +36,7 @@ function App() {
               bookList={books}
               store={storeData}
               update={updateData}
+              remove={deleteData}
             />
           </Route>
         </Switch>
@@ -50,6 +51,10 @@ const storeData = (inputBook) => {
 const updateData = (inputBook) => {
   console.log(inputBook);
   alert("data berhasil diubah!");
+};
+const deleteData = (inputBook) => {
+  console.log(inputBook);
+  alert("data berhasil dihapus!");
 };
 
 export default App;

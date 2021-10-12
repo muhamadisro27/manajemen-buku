@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-const ManajemenBuku = ({ bookList, store, update }) => {
+const ManajemenBuku = ({ bookList, store, update, remove }) => {
   // console.log(bookList);
   const [inputBook, setInputBook] = useState();
   const handleJudul = (event) => {
@@ -33,8 +33,12 @@ const ManajemenBuku = ({ bookList, store, update }) => {
   };
 
   const showEdit = (book) => {
-    setInputBook("book");
+    setInputBook(book);
     setForm("edit");
+  };
+
+  const deleteBook = (book) => {
+    remove(book);
   };
 
   return (
@@ -188,7 +192,12 @@ const ManajemenBuku = ({ bookList, store, update }) => {
                   >
                     Edit
                   </button>
-                  <button className="btn btn-danger">Hapus</button>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => deleteBook(book)}
+                  >
+                    Hapus
+                  </button>
                 </td>
               </tr>
             ))}
