@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-const ManajemenBuku = ({ bookList, store }) => {
+const ManajemenBuku = ({ bookList, store, update }) => {
   // console.log(bookList);
   const [inputBook, setInputBook] = useState();
   const handleJudul = (event) => {
@@ -21,10 +21,20 @@ const ManajemenBuku = ({ bookList, store }) => {
     event.preventDefault();
     store(inputBook);
   };
+  const submitChange = (event) => {
+    event.preventDefault();
+    update(inputBook);
+    setForm("");
+  };
 
   const [form, setForm] = useState();
   const showCreate = () => {
     setForm("create");
+  };
+
+  const showEdit = (book) => {
+    setInputBook("book");
+    setForm("edit");
   };
 
   return (
@@ -86,60 +96,66 @@ const ManajemenBuku = ({ bookList, store }) => {
           </form>
         </div>
       )}
-      <div id="formUbah">
-        <h5>Ubah Buku</h5>
-        <hr />
-        <form className="form-row" onSubmit={submitAdd}>
-          <div className="col-3">
-            <input
-              autocomplete="off"
-              type="text"
-              name="judul"
-              className="form-control mx-2"
-              placeholder="Judul"
-              onChange={handleJudul}
-            />
-          </div>
-          <div className="col-3">
-            <input
-              autocomplete="off"
-              type="text"
-              name="pengarang"
-              className="form-control mx-2"
-              placeholder="Pengarang"
-              onChange={handlePengarang}
-            />
-          </div>
-          <div className="col-2">
-            <input
-              autocomplete="off"
-              type="text"
-              name="harga"
-              className="form-control mx-2"
-              placeholder="Harga"
-              onChange={handleHarga}
-            />
-          </div>
-          <div className="col-2">
-            <input
-              autocomplete="off"
-              type="number"
-              name="stok"
-              className="form-control mx-2"
-              placeholder="Stok"
-              onChange={handleStok}
-            />
-          </div>
-          <div className="col-2">
-            <input
-              autocomplete="off"
-              type="submit"
-              className="btn btn-primary"
-              value="Simpan"
-            />
-          </div>
-        </form>
-      </div>
+      {form === "edit" && (
+        <div id="formUbah">
+          <h5>Ubah Buku</h5>
+          <hr />
+          <form className="form-row" onSubmit={submitChange}>
+            <div className="col-3">
+              <input
+                autocomplete="off"
+                type="text"
+                name="judul"
+                className="form-control mx-2"
+                placeholder="Judul"
+                onChange={handleJudul}
+                value={inputBook.judul}
+              />
+            </div>
+            <div className="col-3">
+              <input
+                autocomplete="off"
+                type="text"
+                name="pengarang"
+                className="form-control mx-2"
+                placeholder="Pengarang"
+                onChange={handlePengarang}
+                value={inputBook.pengarang}
+              />
+            </div>
+            <div className="col-2">
+              <input
+                autocomplete="off"
+                type="text"
+                name="harga"
+                className="form-control mx-2"
+                placeholder="Harga"
+                onChange={handleHarga}
+                value={inputBook.harga}
+              />
+            </div>
+            <div className="col-2">
+              <input
+                autocomplete="off"
+                type="number"
+                name="stok"
+                className="form-control mx-2"
+                placeholder="Stok"
+                onChange={handleStok}
+                value={inputBook.stok}
+              />
+            </div>
+            <div className="col-2">
+              <input
+                autocomplete="off"
+                type="submit"
+                className="btn btn-primary"
+                value="Simpan"
+              />
+            </div>
+          </form>
+        </div>
+      )}
       <div id="daftarBuku">
         <h2 className="mt-3">Daftar Buku</h2>
         <hr />
@@ -166,7 +182,12 @@ const ManajemenBuku = ({ bookList, store }) => {
                 <td>{book.harga}</td>
                 <td>{book.stok}</td>
                 <td colspan="2">
-                  <button className="btn btn-info mr-3 text-white">Edit</button>
+                  <button
+                    className="btn btn-info mr-3 text-white"
+                    onClick={() => showEdit(book)}
+                  >
+                    Edit
+                  </button>
                   <button className="btn btn-danger">Hapus</button>
                 </td>
               </tr>
