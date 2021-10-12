@@ -55,15 +55,33 @@ const storeData = (inputBook, setBooks) => {
     })
     .catch((error) => {
       // console.log(error.res.data);
+      console.log(error.message);
     });
 };
-const updateData = (inputBook) => {
+const updateData = (inputBook, retrieveData) => {
   console.log(inputBook);
-  alert("data berhasil diubah!");
+  axios
+    .put("http://localhost:4000/book/update/" + inputBook._id, inputBook)
+    .then((res) => {
+      // console.log(res);
+      retrieveData();
+      alert("Data berhasil diubah!");
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
 };
-const deleteData = (inputBook) => {
-  console.log(inputBook);
-  alert("data berhasil dihapus!");
+const deleteData = (inputBook, retrieveData) => {
+  // console.log(inputBook);
+  // axios
+  //   .delete("http://localhost:4000/book/delete/" + inputBook._id)
+  //   .then(() => {
+  //     retrieveData();
+  //     alert("data berhasil dihapus!");
+  //   })
+  //   .catch((error) => {
+  //     console.log(error.message);
+  //   });
 };
 
 export default App;
