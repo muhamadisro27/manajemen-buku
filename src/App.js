@@ -4,25 +4,25 @@ import Beranda from "./components/Beranda";
 import Navbar from "./components/Navbar";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import ManajemenBuku from "./components/ManajemenBuku";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function App() {
-  const [books, setBooks] = useState([
-    {
-      _id: 1,
-      judul: "Laskar Pelangi",
-      pengarang: "Andrea Hirata",
-      harga: 80000,
-      stok: 7,
-    },
-    {
-      _id: 2,
-      judul: "Bumi",
-      pengarang: "Tere Liye",
-      harga: 85000,
-      stok: 5,
-    },
-  ]);
+  const [books, setBooks] = useState([]);
+  useEffect(() => {
+    retrieveData();
+  }, []);
+  const retrieveData = () => {
+    axios
+      .get("http://localhost:4000/book")
+      .then((response) => {
+        setBooks(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <BrowserRouter>
