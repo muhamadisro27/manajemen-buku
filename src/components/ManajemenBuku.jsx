@@ -167,7 +167,7 @@ const ManajemenBuku = ({ bookList, store, update, remove }) => {
         <button className="btn btn-primary m-2" onClick={showCreate}>
           Tambah Buku
         </button>
-        <table className="table table-bordered">
+        <table className="table table-bordered ">
           <thead className="text-center">
             <tr>
               <th>No.</th>
@@ -186,9 +186,9 @@ const ManajemenBuku = ({ bookList, store, update, remove }) => {
                 <td>{book.pengarang}</td>
                 <td>{book.harga}</td>
                 <td>{book.stok}</td>
-                <td>
+                <td className="text-center">
                   <button
-                    className="btn btn-info mr-3 text-white"
+                    className="btn btn-info  text-white"
                     onClick={() => showEdit(book)}
                   >
                     Edit
